@@ -13,7 +13,7 @@ RUN dnf upgrade -y &&\
     usermod -aG wheel $mock_user &&\
     usermod -aG mock $mock_user
 
-COPY files/bashrc-rpmbuild /root/.bashrc.d
+COPY files/bashrc-rpmbuild /root/.bashrc.d/rpmbuild
 
 # set login directory
 WORKDIR /root
