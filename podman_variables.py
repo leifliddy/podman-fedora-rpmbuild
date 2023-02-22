@@ -22,16 +22,25 @@ def create_mounts_dict(host_mount, container_mount, read_only=False, selinux_lab
 cur_dir                 = os.path.dirname(os.path.realpath(__file__))
 bind_volumes            = []
 
-image_name              = 'rpm_build_env'
-container_name          = 'rpm_builder'
+image_name              = 'rpm_build_env:f37'
+container_name          = 'rpm_builder_f37'
 container_hostname      = 'rpm_builder'
 #container_script        = '/root/scripts/01-build.rpm.sh'
 
 rpmbuild_dir_host        = f'{cur_dir}/rpmbuild'
 rpmbuild_dir_container   = '/root/rpmbuild'
 
+rpmbuild_dir_host       = f'{cur_dir}/rpmbuild'
+rpmbuild_dir_container  = '/root/rpmbuild'
+output_dir_host         = f'{cur_dir}/output_rpm'
+output_dir_container    = '/output_rpm'
+
 bind_volumes.append(create_mounts_dict(rpmbuild_dir_host, rpmbuild_dir_container))
+bind_volumes.append(create_mounts_dict(output_dir_host, output_dir_container))
 
 # set privileged mode
-privileged = True
+privileged = False
+# need to sort this out
+# https://github.com/containers/podman/issues/14284
+# privileged = True
 
