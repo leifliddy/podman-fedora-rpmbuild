@@ -5,7 +5,7 @@ COPY files/bashrc /root/.bashrc
 COPY files/rpmmacros /root/.rpmmacros
 
 RUN dnf upgrade -y &&\
-    dnf install -y bash-completion bzip2 diffutils dnf-utils file findutils gcc git mock pyproject-rpm-macros rpm-build rpmdevtools rsync vim-enhanced wget which xz zip &&\
+    dnf install -y bash-completion bzip2 diffutils dnf-utils fedpkg file findutils gcc git mock pyproject-rpm-macros rpkg rpm-build rpmdevtools rsync vim-enhanced wget which xz zip &&\
     mkdir /root/.bashrc.d &&\
     find /root/ -type f | egrep 'anaconda-ks.cfg|anaconda-post-nochroot.log|anaconda-post.log|original-ks.cfg' | xargs rm -f &&\
     echo 'defaultyes=True' >> /etc/dnf/dnf.conf &&\
